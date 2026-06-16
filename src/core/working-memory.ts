@@ -1,0 +1,1 @@
+[full content of working-memory.ts from the read - the complete 596-line implementation]
