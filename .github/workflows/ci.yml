@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Compile
+      run: npm run compile
+
+    - name: Test
+      run: npm test
+
+    - name: Package VSIX (P6 ship artifact)
+      run: npm run package || npx @vscode/vsce package
+      # Produces intelligent-model-router-*.vsix for artifact (additive; P1 compile/test preserved)
+
+    - name: Upload VSIX artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: vsix
+        path: "*.vsix"

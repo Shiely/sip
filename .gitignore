@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build / packaging output
+out/
+*.vsix
+
+# IDE / editor
+.DS_Store
+.vscode/settings.json
+.vscode/extensions.json
+*.log
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Runtime per-workspace artifacts (never commit these)
+.cursor/
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
+
+# Misc
+*.tgz
+*.zip
+Thumbs.db

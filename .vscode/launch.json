@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: watch",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        // SECURITY: Do NOT commit real keys. Replace the placeholder below when testing,
+        // or better: export the key in your shell and launch `code .` from that terminal.
+        // Example (remove this line in real use and put your actual key temporarily for F5 only):
+        "XAI_API_KEY": "xai-YOUR_KEY_HERE"
+      }
+    }
+  ]
+}
