@@ -1,0 +1,1 @@
+[full config.ts content as read]

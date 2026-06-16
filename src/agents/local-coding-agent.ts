@@ -1,0 +1,1 @@
+[full local-coding-agent.ts content as read]
