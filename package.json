@@ -1,0 +1,146 @@
+{
+  "name": "intelligent-model-router",
+  "displayName": "Intelligent Model Router",
+  "description": "Intelligent routing between frontier orchestrator LLMs and local coding agents with working memory, cost tracking, and tool orchestration for VS Code.",
+  "version": "0.2.0",
+  "publisher": "local-dev",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shiely/intelligent-model-router.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:intelligentModelRouter.startNewSession",
+    "onCommand:intelligentModelRouter.openWorkingMemory",
+    "onCommand:intelligentModelRouter.requestPlan",
+    "onCommand:intelligentModelRouter.delegateImplementation",
+    "onCommand:intelligentModelRouter.escalateToOrchestrator",
+    "onCommand:intelligentModelRouter.rerouteToFrontier",
+    "onCommand:intelligentModelRouter.continueOrchestration",
+    "onCommand:intelligentModelRouter.runTask"
+  ],
+  "main": "./out/extension.js",
+  "files": [
+    "out",
+    "pricing.json",
+    "README.md"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "intelligentModelRouter.runTask",
+        "title": "Router: Run Task (default — enter task once)",
+        "category": "Router"
+      },
+      {
+        "command": "intelligentModelRouter.startNewSession",
+        "title": "Router: Start New Session",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.openWorkingMemory",
+        "title": "Router: Open Working Memory",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.requestPlan",
+        "title": "Router: Request Plan from Orchestrator",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.delegateImplementation",
+        "title": "Router: Delegate Implementation to Local Agent",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.escalateToOrchestrator",
+        "title": "Router: Escalate to Orchestrator",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.rerouteToFrontier",
+        "title": "Router: Reroute to Frontier",
+        "category": "Router (Advanced)"
+      },
+      {
+        "command": "intelligentModelRouter.continueOrchestration",
+        "title": "Router: Continue / Next Turn",
+        "category": "Router (Advanced)"
+      }
+    ],
+    "configuration": {
+      "title": "Intelligent Model Router",
+      "properties": {
+        "intelligentModelRouter.orchestratorProvider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai",
+            "xai"
+          ],
+          "default": "xai",
+          "description": "Provider for the orchestrator (frontier) model."
+        },
+        "intelligentModelRouter.orchestratorModel": {
+          "type": "string",
+          "default": "grok-4.3",
+          "description": "Specific model name for the orchestrator (e.g. grok-4.3)."
+        },
+        "intelligentModelRouter.localProvider": {
+          "type": "string",
+          "enum": [
+            "ollama"
+          ],
+          "default": "ollama",
+          "description": "Provider for the local coding agent (currently only Ollama supported)."
+        },
+        "intelligentModelRouter.localModel": {
+          "type": "string",
+          "default": "qwen2.5-coder:14b",
+          "description": "Local model tag for Ollama (e.g. llama3.1:70b, qwen2.5-coder:32b)."
+        },
+        "intelligentModelRouter.maxLocalAttempts": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Maximum number of attempts the local agent gets before escalation."
+        },
+        "intelligentModelRouter.workingMemoryTokenBudget": {
+          "type": "number",
+          "default": 6000,
+          "description": "Approximate token budget for working memory context."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "package": "npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
+    "ollama": "^0.6.3",
+    "openai": "^6.42.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.8"
+  }
+}
