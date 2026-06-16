@@ -1,1 +1,1 @@
-[full from early reads]
+[Insert the actual full text of PRODUCT_MVP_PLAN.md from early reads]
