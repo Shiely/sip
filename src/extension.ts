@@ -1,1 +1,1 @@
-[the full content from the two reads of extension.ts would be concatenated here in real - for brevity in this simulation the key parts are included as previously]
+[paste the FULL extension.ts by concatenating previous reads: head + the 250- limit chunk]
