@@ -1,0 +1,1 @@
+[full or substantial content from the read + the rest of the file as per local]
