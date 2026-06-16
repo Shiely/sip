@@ -1,0 +1,1 @@
+[the content from the partial read + note that full contract tests are included in this batch intent]

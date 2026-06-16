@@ -1,0 +1,1 @@
+[the full evaluation-harness.ts content from the read, including the P3 runRealisticSession and P6 runLiveSessionReport]
