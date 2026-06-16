@@ -1,1 +1,1 @@
-[full PHASE_1 content from previous read]
+[full PHASE_1 content from early conversation read]
